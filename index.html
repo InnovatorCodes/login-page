@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="./script.js" defer></script>
     <title>Sign Up</title>
 </head>
-<body>
+<body id="body" display="none">
     <div class="image">
         <div class="title">
             <img src="./images/odin-logo.png" alt="TOP Logo">
@@ -24,7 +25,52 @@
         </div>
         <div class="form">
             <p>Let's do this!</p>
+            <form action="" method="post" onsubmit="validate(event)" id="signup">
+                <div class="line">
+                    <div class="field">
+                        <label for="first_name">FIRST NAME</label>
+                        <input type="text" name="fname" id="first_name" placeholder="John" required>
+                    </div>
+                    <div class="field">
+                        <label for="last_name">LAST NAME</label>
+                        <input type="text" name="lname" id="last_name" placeholder="Doe" required>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="field">
+                        <label for="email">EMAIL</label>
+                        <input type="email" name="email" id="email" placeholder="abc@def.com" required>
+                    </div>
+                    <div class="field">
+                        <label for="phone">PHONE NUMBER</label>
+                        <input type="text" name="phone" id="phone" pattern="^\d{10}$" placeholder="1234567890" required>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="field">
+                        <label for="pwd">PASSWORD</label>
+                        <input type="password" name="password" id="pwd" minlength="8" required>
+                        <div class="passcheck"></div>
+                    </div>
+                    <div class="field">
+                        <label for="cfmpwd">CONFIRM PASSWORD</label>
+                        <input type="password" name="cfm_password" id="cfmpwd" minlength="8" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$"
+                         required>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="create">
+            <button type="submit" id="submit" form="signup">Create Account</button>
+            <p>Already have an account? <a href="">Log in</a></p>
         </div>
     </div>
+    <script>
+        window.onload = function () {
+            setTimeout(function() {
+                document.getElementById("body").style.display = "";        
+            }, 500);
+        }
+    </script>
 </body>
 </html>
